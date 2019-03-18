@@ -1,5 +1,6 @@
 from src.pogo_log import add_to_pokedex, list_pokedex
 import pytest
+from test.lib import xfail
 
 
 
@@ -18,12 +19,8 @@ def test_add_read_multiple():
 
 def test_add_read_multiple_with_duplicate():
     add_to_pokedex("Bulbasaur", False)
-    try:
+    with xfail(KeyError, "Bug with adding Squirtle"):
         add_to_pokedex("Squirtle", False)
-    except KeyError:
-        pytest.xfail("A bug with adding Squirtle")
     add_to_pokedex("Squirtle", False)
-    try:
+    with xfail(AssertionError, "A bug with retrieving pokedex"):
         assert len(list_pokedex()) == 2
-    except AssertionError:
-        pytest.xfail("A bug with retrieving pokedex")
