@@ -1,4 +1,4 @@
-from src.pogo_log import add_to_pokedex, list_pokedex
+from src.pogo_log import add_to_pokedex, list_pokedex, present_in_pokedex
 import pytest
 from test.lib import xfail
 
@@ -24,3 +24,9 @@ def test_add_read_multiple_with_duplicate():
     add_to_pokedex("Squirtle", False)
     with xfail(AssertionError, "A bug with retrieving pokedex"):
         assert len(list_pokedex()) == 2
+
+
+
+def test_present_in_dex():
+    add_to_pokedex("Bulbasaur", True)
+    assert present_in_pokedex("Bulbasaur", True)
