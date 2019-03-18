@@ -24,7 +24,7 @@ def init_db():
         pass
 
 
-SPECIES_TO_POKEDEX = {"Bulbasaur": 1, "Charmander": 4, "Squirtle": 7, "Pikachu": 25}
+SPECIES_TO_POKEDEX = {"Bulbasaur": 1, "Charmander": 4, "Pikachu": 25}
 POKEDEX_TO_SPECIES = {SPECIES_TO_POKEDEX[key]: key for key in SPECIES_TO_POKEDEX.keys()}
 
 
