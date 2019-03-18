@@ -24,7 +24,7 @@ def init_db():
         pass
 
 
-SPECIES_TO_POKEDEX = {"Bulbasaur": 1, "Charmander": 4, "Pikachu": 25}
+SPECIES_TO_POKEDEX = {"Bulbasaur": 1, "Charmander": 4, "Squirtle": 7, "Pikachu": 25}
 POKEDEX_TO_SPECIES = {SPECIES_TO_POKEDEX[key]: key for key in SPECIES_TO_POKEDEX.keys()}
 
 
@@ -37,7 +37,7 @@ def add_to_pokedex(species, female):
 
 def list_pokedex():
     with operate_on_db() as c:
-        numbers = c.execute("""select distinct dex_number from Pokedex""").fetchall()[:1]
+        numbers = c.execute("""select distinct dex_number from Pokedex""").fetchall()
     return [POKEDEX_TO_SPECIES[number[0]] for number in numbers]
 
 def present_in_pokedex(species, female):
